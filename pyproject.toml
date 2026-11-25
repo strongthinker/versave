@@ -1,0 +1,22 @@
+[project]
+name = "versave"
+version = "0.1.0"
+description = "自动为文件修改生成「名字_v大版本.小版本_时间戳」快照的命令行工具"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "versave" }]
+keywords = ["versioning", "snapshot", "filename", "ai", "backup", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+  "Topic :: System :: Archiving :: Backup",
+]
+
+[project.scripts]
+versave = "versave:main"
+versave-mcp = "mcp_server:main"
+
+[tool.setuptools]
+py-modules = ["versave", "mcp_server"]

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# 演示产物（含本地时间戳快照，不入库）
+demo/
+
+# versave 自身的运行状态与备份
+.versave/
+*.versave-bak

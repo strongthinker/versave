@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "versave": {
+      "command": "python",
+      "args": ["/ABSOLUTE/PATH/TO/versave/mcp_server.py"],
+      "env": {}
+    }
+  }
+}
