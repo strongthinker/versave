@@ -12,3 +12,7 @@ demo/
 # versave 自身的运行状态与备份
 .versave/
 *.versave-bak
+
+# 安全策略：CI workflow 会在他人的 runner 上执行代码，本项目一律不入库、不推送。
+# 需要 CI 时请自行在网页端添加并逐行审查。本地可保留一份做参考。
+.github/workflows/**

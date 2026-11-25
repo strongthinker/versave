@@ -246,6 +246,24 @@ project/
 
 ---
 
+## 安全与隐私
+
+这个工具的定位是「本地小工具」，安全边界刻意收得很窄：
+
+- **零网络**：全项目只用 Python 标准库，没有 `urllib` / `socket` / `requests`，不发任何请求、不采集遥测、不检查更新。
+  文件内容永远不会离开你的机器。
+- **零第三方依赖**：`pyproject.toml` 没有 `dependencies`，不存在供应链投毒面。
+- **只写你指定的位置**：快照写到原文件目录（或你配置的 `store` 目录）；`.versave/state.json` 只存相对路径、版本号、
+  时间、SHA-256 和备注，不存文件内容之外的任何信息。
+- **MCP 只走 stdio**：`mcp_server.py` 不监听端口、不开 HTTP 服务，随客户端进程启停。
+- **安装器不改你的东西**：只做本地文件复制；写规则文件用标记块注入，块外内容一个字不动，首次追加前备份 `*.versave-bak`。
+- **不含 CI workflow**：`.github/workflows/**` 已加入 `.gitignore`。workflow 文件会在 GitHub 的 runner 上执行代码、
+  可读取仓库 secrets，属于高权限资产；本项目一律不上传此类文件。需要 CI 请自行在网页端添加并逐行审查。
+
+> 提醒：`git log` 里能看到提交者的姓名和邮箱。如果不想暴露真实邮箱，把 `git config user.email` 改成
+> `<GitHub 数字ID>+<用户名>@users.noreply.github.com`，并在 GitHub 设置里勾选
+> “Block command line pushes that expose my email”。
+
 ## 设计取舍
 
 - **不覆盖原文件**：AI 的下游流程（导出、构建、引用）都盯着 `report.md`，改名会连锁炸掉。
