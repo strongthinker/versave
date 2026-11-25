@@ -38,6 +38,11 @@ GitHub 上相关的东西不少，但没有一个正好做这件事：
 只需要 Python 3.9+，没有第三方依赖。
 
 ```bash
+# 方式零：从 GitHub 克隆后一键装给所有 AI（推荐）
+git clone https://github.com/strongthinker/versave.git
+cd versave
+python install.py --tool all -p <你的项目目录>
+
 # 方式一：直接跑
 python versave.py save report.md
 
